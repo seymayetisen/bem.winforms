@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblAd = new System.Windows.Forms.Label();
             this.lblSoyAd = new System.Windows.Forms.Label();
             this.lblKimlikNo = new System.Windows.Forms.Label();
@@ -38,6 +39,13 @@
             this.lstKisi = new System.Windows.Forms.ListBox();
             this.txtUzmanlik = new System.Windows.Forms.TextBox();
             this.lblUzmanlik = new System.Windows.Forms.Label();
+            this.chkAktif = new System.Windows.Forms.CheckBox();
+            this.pnlCinsiyet = new System.Windows.Forms.Panel();
+            this.rdbCinsiyetErkek = new System.Windows.Forms.RadioButton();
+            this.rdbCinsiyetKadin = new System.Windows.Forms.RadioButton();
+            this.rbDiger = new System.Windows.Forms.RadioButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pnlCinsiyet.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblAd
@@ -90,7 +98,7 @@
             // 
             // btnEkle
             // 
-            this.btnEkle.Location = new System.Drawing.Point(112, 161);
+            this.btnEkle.Location = new System.Drawing.Point(112, 226);
             this.btnEkle.Name = "btnEkle";
             this.btnEkle.Size = new System.Drawing.Size(104, 23);
             this.btnEkle.TabIndex = 6;
@@ -103,7 +111,7 @@
             this.lstKisi.FormattingEnabled = true;
             this.lstKisi.Location = new System.Drawing.Point(236, 23);
             this.lstKisi.Name = "lstKisi";
-            this.lstKisi.Size = new System.Drawing.Size(260, 160);
+            this.lstKisi.Size = new System.Drawing.Size(260, 225);
             this.lstKisi.TabIndex = 7;
             this.lstKisi.SelectedIndexChanged += new System.EventHandler(this.lstKisi_SelectedIndexChanged);
             // 
@@ -123,11 +131,77 @@
             this.lblUzmanlik.TabIndex = 9;
             this.lblUzmanlik.Text = "Uzmanlık";
             // 
+            // chkAktif
+            // 
+            this.chkAktif.AutoSize = true;
+            this.chkAktif.Checked = true;
+            this.chkAktif.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAktif.Location = new System.Drawing.Point(112, 189);
+            this.chkAktif.Name = "chkAktif";
+            this.chkAktif.Size = new System.Drawing.Size(47, 17);
+            this.chkAktif.TabIndex = 10;
+            this.chkAktif.Text = "Aktif";
+            this.chkAktif.UseVisualStyleBackColor = true;
+            // 
+            // pnlCinsiyet
+            // 
+            this.pnlCinsiyet.Controls.Add(this.rbDiger);
+            this.pnlCinsiyet.Controls.Add(this.rdbCinsiyetErkek);
+            this.pnlCinsiyet.Controls.Add(this.rdbCinsiyetKadin);
+            this.pnlCinsiyet.Location = new System.Drawing.Point(39, 158);
+            this.pnlCinsiyet.Name = "pnlCinsiyet";
+            this.pnlCinsiyet.Size = new System.Drawing.Size(186, 25);
+            this.pnlCinsiyet.TabIndex = 14;
+            // 
+            // rdbCinsiyetErkek
+            // 
+            this.rdbCinsiyetErkek.AutoSize = true;
+            this.rdbCinsiyetErkek.Location = new System.Drawing.Point(58, 3);
+            this.rdbCinsiyetErkek.Name = "rdbCinsiyetErkek";
+            this.rdbCinsiyetErkek.Size = new System.Drawing.Size(53, 17);
+            this.rdbCinsiyetErkek.TabIndex = 15;
+            this.rdbCinsiyetErkek.TabStop = true;
+            this.rdbCinsiyetErkek.Tag = "1";
+            this.rdbCinsiyetErkek.Text = "Erkek";
+            this.rdbCinsiyetErkek.UseVisualStyleBackColor = true;
+            // 
+            // rdbCinsiyetKadin
+            // 
+            this.rdbCinsiyetKadin.AutoSize = true;
+            this.rdbCinsiyetKadin.Location = new System.Drawing.Point(3, 3);
+            this.rdbCinsiyetKadin.Name = "rdbCinsiyetKadin";
+            this.rdbCinsiyetKadin.Size = new System.Drawing.Size(52, 17);
+            this.rdbCinsiyetKadin.TabIndex = 14;
+            this.rdbCinsiyetKadin.TabStop = true;
+            this.rdbCinsiyetKadin.Tag = "0";
+            this.rdbCinsiyetKadin.Text = "Kadın";
+            this.rdbCinsiyetKadin.UseVisualStyleBackColor = true;
+            // 
+            // rbDiger
+            // 
+            this.rbDiger.AutoSize = true;
+            this.rbDiger.Location = new System.Drawing.Point(130, 3);
+            this.rbDiger.Name = "rbDiger";
+            this.rbDiger.Size = new System.Drawing.Size(50, 17);
+            this.rbDiger.TabIndex = 16;
+            this.rbDiger.TabStop = true;
+            this.rbDiger.Tag = "2";
+            this.rbDiger.Text = "Diğer";
+            this.rbDiger.UseVisualStyleBackColor = true;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(508, 209);
+            this.ClientSize = new System.Drawing.Size(508, 265);
+            this.Controls.Add(this.pnlCinsiyet);
+            this.Controls.Add(this.chkAktif);
             this.Controls.Add(this.lblUzmanlik);
             this.Controls.Add(this.txtUzmanlik);
             this.Controls.Add(this.lstKisi);
@@ -141,6 +215,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.pnlCinsiyet.ResumeLayout(false);
+            this.pnlCinsiyet.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,6 +235,12 @@
         private System.Windows.Forms.ListBox lstKisi;
         private System.Windows.Forms.TextBox txtUzmanlik;
         private System.Windows.Forms.Label lblUzmanlik;
+        private System.Windows.Forms.CheckBox chkAktif;
+        private System.Windows.Forms.Panel pnlCinsiyet;
+        private System.Windows.Forms.RadioButton rdbCinsiyetErkek;
+        private System.Windows.Forms.RadioButton rdbCinsiyetKadin;
+        private System.Windows.Forms.RadioButton rbDiger;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
