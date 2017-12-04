@@ -38,6 +38,9 @@
             this.lstKisi = new System.Windows.Forms.ListBox();
             this.txtUzmanlik = new System.Windows.Forms.TextBox();
             this.lblUzmanlik = new System.Windows.Forms.Label();
+            this.chkAktif = new System.Windows.Forms.CheckBox();
+            this.rdbCinsiyetKadin = new System.Windows.Forms.RadioButton();
+            this.rdbCinsiyetErkek = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // lblAd
@@ -90,7 +93,7 @@
             // 
             // btnEkle
             // 
-            this.btnEkle.Location = new System.Drawing.Point(112, 161);
+            this.btnEkle.Location = new System.Drawing.Point(112, 238);
             this.btnEkle.Name = "btnEkle";
             this.btnEkle.Size = new System.Drawing.Size(104, 23);
             this.btnEkle.TabIndex = 6;
@@ -123,11 +126,46 @@
             this.lblUzmanlik.TabIndex = 9;
             this.lblUzmanlik.Text = "Uzmanlık";
             // 
+            // chkAktif
+            // 
+            this.chkAktif.AutoSize = true;
+            this.chkAktif.Location = new System.Drawing.Point(112, 206);
+            this.chkAktif.Name = "chkAktif";
+            this.chkAktif.Size = new System.Drawing.Size(47, 17);
+            this.chkAktif.TabIndex = 10;
+            this.chkAktif.Text = "Aktif";
+            this.chkAktif.UseVisualStyleBackColor = true;
+            // 
+            // rdbCinsiyetKadin
+            // 
+            this.rdbCinsiyetKadin.AutoSize = true;
+            this.rdbCinsiyetKadin.Location = new System.Drawing.Point(112, 166);
+            this.rdbCinsiyetKadin.Name = "rdbCinsiyetKadin";
+            this.rdbCinsiyetKadin.Size = new System.Drawing.Size(51, 17);
+            this.rdbCinsiyetKadin.TabIndex = 11;
+            this.rdbCinsiyetKadin.TabStop = true;
+            this.rdbCinsiyetKadin.Text = "kadin";
+            this.rdbCinsiyetKadin.UseVisualStyleBackColor = true;
+            // 
+            // rdbCinsiyetErkek
+            // 
+            this.rdbCinsiyetErkek.AutoSize = true;
+            this.rdbCinsiyetErkek.Location = new System.Drawing.Point(161, 166);
+            this.rdbCinsiyetErkek.Name = "rdbCinsiyetErkek";
+            this.rdbCinsiyetErkek.Size = new System.Drawing.Size(52, 17);
+            this.rdbCinsiyetErkek.TabIndex = 12;
+            this.rdbCinsiyetErkek.TabStop = true;
+            this.rdbCinsiyetErkek.Text = "erkek";
+            this.rdbCinsiyetErkek.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(508, 209);
+            this.ClientSize = new System.Drawing.Size(508, 420);
+            this.Controls.Add(this.rdbCinsiyetErkek);
+            this.Controls.Add(this.rdbCinsiyetKadin);
+            this.Controls.Add(this.chkAktif);
             this.Controls.Add(this.lblUzmanlik);
             this.Controls.Add(this.txtUzmanlik);
             this.Controls.Add(this.lstKisi);
@@ -158,6 +196,9 @@
         private System.Windows.Forms.ListBox lstKisi;
         private System.Windows.Forms.TextBox txtUzmanlik;
         private System.Windows.Forms.Label lblUzmanlik;
+        private System.Windows.Forms.CheckBox chkAktif;
+        private System.Windows.Forms.RadioButton rdbCinsiyetKadin;
+        private System.Windows.Forms.RadioButton rdbCinsiyetErkek;
     }
 }
 

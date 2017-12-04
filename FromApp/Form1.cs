@@ -27,7 +27,16 @@ namespace FromApp
             kisi.Soyad = txtSoyad.Text;
             kisi.TcKimlikNo = txtKimlikNo.Text;
             kisi.Uzmanlik = txtUzmanlik.Text;
+            kisi.IsAktif = chkAktif.Checked;
 
+            //if (rdbCinsiyetKadin.Checked)
+            //{
+            //    kisi.Cinsiyet = (int)Cinsiyet.kadın;
+            //}
+            //else
+            //{
+            //    kisi.Cinsiyet = (int)Cinsiyet.erkek;
+            //}
             if (!isUpdate)
             {
                 lstKisi.Items.Add(kisi);
@@ -41,6 +50,7 @@ namespace FromApp
             txtSoyad.Text = "";
             txtKimlikNo.Text = "";
             txtUzmanlik.Text = "";
+            chkAktif.Checked = false;
 
             isUpdate = false;
         }
@@ -58,6 +68,8 @@ namespace FromApp
             txtSoyad.Text = gelenKisi.Soyad;
             txtKimlikNo.Text = gelenKisi.TcKimlikNo;
             txtUzmanlik.Text = gelenKisi.Uzmanlik;
+            chkAktif.Checked = gelenKisi.IsAktif;
+
 
             isUpdate = true;
         }
