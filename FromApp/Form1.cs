@@ -20,6 +20,7 @@ namespace FromApp
 
         private bool isUpdate;
         private int selectedRowIndex = -1;
+        private int imageListId = 0;
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
@@ -31,10 +32,16 @@ namespace FromApp
 
             var li = new ListViewItem(new[] { "",txtAd.Text, txtSoyad.Text, txtKimlikNo.Text, txtUzmanlik.Text });
 
-            imageList2.Images.Add(pictureBox1.Image);
+            //imageList2.Images.Add(pictureBox1.Image);
 
-            li.ImageIndex = imageList2.Images.Count - 1;
+            // li.ImageIndex = imageList2.Images.Count - 1;
+            ////imageList2.Images.Add(imageListId.ToString(), pictureBox1.Image);
+            ////li.ImageKey = imageListId.ToString();
+            //// imageListId++;
+            imageList2.Images.Add(RandomKey(), pictureBox1.Image);
+            li.ImageKey = RandomKey();
 
+            RandomKey3();
 
             if (isUpdate)
             {
@@ -212,7 +219,8 @@ namespace FromApp
             txtKimlikNo.Text = selectedItem.SubItems[3].Text;
             txtUzmanlik.Text = selectedItem.SubItems[4].Text;
 
-            pictureBox1.Image = imageList2.Images[selectedItem.ImageIndex];
+            pictureBox1.Image = imageList2.Images[selectedItem.ImageKey];
+            
 
             isUpdate = true;
             selectedRowIndex = lv.SelectedIndices[0];
@@ -262,6 +270,27 @@ namespace FromApp
         private void txtAd_Leave(object sender, EventArgs e)
         {
             ProgresbarHesapla();
+        }
+        private string RandomKey()
+        {
+            int key = 0;
+            Random rnd = new Random();
+            key = rnd.Next(0,1000);
+            
+            return key.ToString();
+        }
+        private string RandomKey3()
+        {
+            string key = "";
+           // string karakterler="s";
+            Random rnd = new Random();
+            for (int i = 0; i < 3; i++)
+            {
+                key += Convert.ToChar(rnd.Next(65536));
+            }
+            
+
+            return key;
         }
     }
 }
