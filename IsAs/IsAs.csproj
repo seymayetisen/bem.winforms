@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DD4BDB74-CCE9-4E95-AB10-E0A3B4243994}</ProjectGuid>
+    <ProjectGuid>{FC588D08-11C2-453E-9AD8-468CF5B20F71}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Notepad</RootNamespace>
-    <AssemblyName>Notepad</AssemblyName>
+    <RootNamespace>IsAs</RootNamespace>
+    <AssemblyName>IsAs</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
