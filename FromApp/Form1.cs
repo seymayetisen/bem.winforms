@@ -142,7 +142,7 @@ namespace FromApp
         {
             var kisi = ((ListBox)sender).SelectedItem as Kisi;
 
-            if (kisi is null)
+            if (kisi == null)
             {
                 return;
             }
@@ -176,7 +176,7 @@ namespace FromApp
             var lv = sender as ListView;
             //var lv = (ListView)sender;
 
-            if (lv is null)
+            if (lv == null)
             {
                 return;
             }
@@ -272,7 +272,7 @@ namespace FromApp
         {
             var comboBox = sender as ComboBox;
 
-            if(comboBox is null)
+            if(comboBox == null)
             {
                 return;
             }
@@ -311,7 +311,7 @@ namespace FromApp
 
         private void contextMenuStrip1_Opened(object sender, EventArgs e)
         {
-            toolStripMenuItem2.Enabled = !(pictureBox1.Image is null);
+            toolStripMenuItem2.Enabled = !(pictureBox1.Image == null);
         }
     }
 }

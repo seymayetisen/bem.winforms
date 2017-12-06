@@ -104,22 +104,143 @@ Etiam sed accumsan risus, vitae gravida ex. Donec ex risus, mollis quis pulvinar
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            richTextBox1.SelectionLength = 8;
+            richTextBox1.SelectionFont = new Font(richTextBox1.Font.FontFamily, 8);
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            richTextBox1.SelectionLength = 10;
+             richTextBox1.SelectionFont = new Font(richTextBox1.Font.FontFamily, 10);
         }
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
+           richTextBox1.SelectionFont = new Font(richTextBox1.Font.FontFamily, 12);
+        }
+
+      
+
+        private void txtboyut_TextChanged(object sender, EventArgs e)
+        {
+            if (txtboyut.Text=="")
+            {
+                return;
+            }
+            float a = float.Parse(txtboyut.Text);
+            richTextBox1.SelectionFont = new Font(richTextBox1.Font.FontFamily, a);
+        }
+
+        private void kalınToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            if (kalınToolStripMenuItem.Checked)
+            {
+                kalınToolStripMenuItem.Checked = false;
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font, FontStyle.Regular);
+            }
+            else
+            {
+                kalınToolStripMenuItem.Checked = true;
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font, FontStyle.Bold);
+
+            }
             
         }
 
-        private void diğerToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void italikToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (italikToolStripMenuItem.Checked)
+            {
+                italikToolStripMenuItem.Checked = false;
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font, FontStyle.Regular);
+            }
+            else
+            {
+                italikToolStripMenuItem.Checked = true;
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font, FontStyle.Italic);
 
+            }
+            
+            
+        }
+
+        private void altçizgiliToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (altçizgiliToolStripMenuItem.Checked)
+            {
+                altçizgiliToolStripMenuItem.Checked = false;
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font, FontStyle.Regular);
+            }
+            else
+            {
+                altçizgiliToolStripMenuItem.Checked = true;
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font, FontStyle.Underline);
+
+            }
+            
+
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            if (richTextBox1.SelectionFont.Italic)
+            {
+                italikToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                italikToolStripMenuItem.Checked = false;
+
+            }
+
+            if (richTextBox1.SelectionFont.Bold)
+            {
+                kalınToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                kalınToolStripMenuItem.Checked = false;
+
+            }
+
+            if (richTextBox1.SelectionFont.Underline)
+            {
+                altçizgiliToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                altçizgiliToolStripMenuItem.Checked = false;
+
+            }
+
+        }
+
+        private void kesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.SelectionLength > 0)
+            {
+                richTextBox1.Cut();
+            }
+            else
+            {
+                MessageBox.Show("Seçili alan yok...");
+            }
+        }
+
+        private void kopyalaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.SelectionLength > 0)
+            {
+                richTextBox1.Copy();
+            }
+            else
+            {
+                MessageBox.Show("Seçili alan yok...");
+            }
+        }
+
+        private void yapıştırToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                richTextBox1.Paste();
         }
     }
 }
