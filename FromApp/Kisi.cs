@@ -12,7 +12,7 @@ namespace FromApp
         public string Soyad { get; set; }
         public string TcKimlikNo { get; set; }
         public string Uzmanlik { get; set; }
-        public bool IsAktif { get; set; }
+        public bool IsActive { get; set; }
         public Cinsiyet Cinsiyet { get; set; }
 
         public override string ToString()
@@ -20,9 +20,11 @@ namespace FromApp
             return $"{Ad} {Soyad}";
         }
     }
+
     public enum Cinsiyet
     {
-        kadın,
-        erkek
+        Kadın,
+        Erkek,
+        Diger
     }
 }
