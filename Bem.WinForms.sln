@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomSample", "RandomSampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsAs", "IsAs\IsAs.csproj", "{FC588D08-11C2-453E-9AD8-468CF5B20F71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichTextBox", "RichTextBox\RichTextBox.csproj", "{0C0DB906-68D0-4656-BB2D-9F186D83C751}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FC588D08-11C2-453E-9AD8-468CF5B20F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC588D08-11C2-453E-9AD8-468CF5B20F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC588D08-11C2-453E-9AD8-468CF5B20F71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C0DB906-68D0-4656-BB2D-9F186D83C751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C0DB906-68D0-4656-BB2D-9F186D83C751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C0DB906-68D0-4656-BB2D-9F186D83C751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C0DB906-68D0-4656-BB2D-9F186D83C751}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
