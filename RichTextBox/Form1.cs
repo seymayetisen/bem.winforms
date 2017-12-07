@@ -64,7 +64,7 @@ Etiam sed accumsan risus, vitae gravida ex. Donec ex risus, mollis quis pulvinar
 
             var reader = new StreamReader(openFileDialog1.FileName, Encoding.Default);
 
-            var text = reader.ReadToEnd();//0 dan sonuna kadar
+            var text = reader.ReadToEnd();
 
             richTextBox1.Text = text;
         }
