@@ -31,9 +31,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.panel1.SuspendLayout();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // listBox1
@@ -61,36 +59,26 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // flowLayoutPanel1
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.richTextBox1);
-            this.panel1.Location = new System.Drawing.Point(349, 57);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(252, 155);
-            this.panel1.TabIndex = 3;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(77, 43);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(100, 252);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(346, 30);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 100);
+            this.flowLayoutPanel1.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 346);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -100,8 +88,7 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 
