@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblSinavAdi = new System.Windows.Forms.Label();
             this.lblSinavAciklama = new System.Windows.Forms.Label();
             this.prgCevapOrani = new System.Windows.Forms.ProgressBar();
             this.pnlSorular = new System.Windows.Forms.Panel();
             this.lblKalanZaman = new System.Windows.Forms.Label();
             this.lblAdSoyad = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lblSinavAdi
@@ -75,11 +77,11 @@
             this.lblKalanZaman.AutoSize = true;
             this.lblKalanZaman.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblKalanZaman.ForeColor = System.Drawing.Color.Green;
-            this.lblKalanZaman.Location = new System.Drawing.Point(486, 13);
+            this.lblKalanZaman.Location = new System.Drawing.Point(445, 13);
             this.lblKalanZaman.Name = "lblKalanZaman";
-            this.lblKalanZaman.Size = new System.Drawing.Size(87, 31);
+            this.lblKalanZaman.Size = new System.Drawing.Size(128, 31);
             this.lblKalanZaman.TabIndex = 4;
-            this.lblKalanZaman.Text = "00:00";
+            this.lblKalanZaman.Text = "00:00:00";
             // 
             // lblAdSoyad
             // 
@@ -90,6 +92,10 @@
             this.lblAdSoyad.TabIndex = 5;
             this.lblAdSoyad.Text = "Ad Soyad";
             this.lblAdSoyad.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // frmSinavEkrani
             // 
@@ -118,5 +124,6 @@
         private System.Windows.Forms.Panel pnlSorular;
         private System.Windows.Forms.Label lblKalanZaman;
         public System.Windows.Forms.Label lblAdSoyad;
+        private System.Windows.Forms.Timer timer1;
     }
 }

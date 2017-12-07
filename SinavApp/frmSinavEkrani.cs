@@ -15,6 +15,8 @@ namespace SinavApp
     {
         public string AdSoyad { get; set; }
         public string SinavDosyaYolu { get; set; }
+        public int SinavSüresi { get; set; }
+        public double SinavSüresiYüzdeOn { get; set; }
 
         public frmSinavEkrani()
         {
@@ -24,7 +26,7 @@ namespace SinavApp
             //this.lblAdSoyad.Text = frmGiris.txtAdSoyad.Text;
         }
 
-        public frmSinavEkrani(string adSoyad, string sinavDosyaYolu) :this()
+        public frmSinavEkrani(string adSoyad, string sinavDosyaYolu) : this()
         {
             AdSoyad = adSoyad;
             lblAdSoyad.Text = adSoyad;
@@ -38,7 +40,28 @@ namespace SinavApp
             {
                 lblSinavAdi.Text = streamReader.ReadLine();
                 lblSinavAciklama.Text = streamReader.ReadLine();
+                SinavSüresi = int.Parse(streamReader.ReadLine());
+                SinavSüresiYüzdeOn = SinavSüresi / 10;
+
             }
+            timer1.Interval = 1000;
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (SinavSüresi == 0)
+            {
+                timer1.Stop();
+            }
+            this.lblKalanZaman.Text = string.Format("{0:00}:{1:00}:{2:00}", (SinavSüresi / 3600), (SinavSüresi / 60), (SinavSüresi % 60));
+            
+            if (SinavSüresi <= SinavSüresiYüzdeOn)
+            {
+                lblKalanZaman.ForeColor = Color.Red;
+            }
+            SinavSüresi--;
+
         }
     }
 }
