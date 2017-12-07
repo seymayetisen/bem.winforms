@@ -85,6 +85,7 @@
             this.btnSinavSec.TabIndex = 4;
             this.btnSinavSec.Text = "Sınav Seç";
             this.btnSinavSec.UseVisualStyleBackColor = true;
+            
             // 
             // lblSinavDosyaYolu
             // 
@@ -103,6 +104,7 @@
             this.btnDevamEt.TabIndex = 6;
             this.btnDevamEt.Text = "DEVAM >>";
             this.btnDevamEt.UseVisualStyleBackColor = true;
+            
             // 
             // frmGiris
             // 
