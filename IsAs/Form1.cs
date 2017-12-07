@@ -40,7 +40,7 @@ namespace IsAs
             object b2 = button1 as Button;
 
             ListBox l1 = b2 as ListBox;
-            ListBox l2 = (ListBox)b2;
+            //ListBox l2 = (ListBox)b2;
             listBox2.Items.Add(l1 is null);
 
             Button b3 = b2 as Button;

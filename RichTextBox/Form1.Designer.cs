@@ -358,23 +358,29 @@
             // trackBar2
             // 
             this.trackBar2.Location = new System.Drawing.Point(20, 19);
+            this.trackBar2.Maximum = 255;
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Size = new System.Drawing.Size(104, 45);
             this.trackBar2.TabIndex = 0;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // trackBar3
             // 
             this.trackBar3.Location = new System.Drawing.Point(20, 66);
+            this.trackBar3.Maximum = 255;
             this.trackBar3.Name = "trackBar3";
             this.trackBar3.Size = new System.Drawing.Size(104, 45);
             this.trackBar3.TabIndex = 1;
+            this.trackBar3.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // trackBar4
             // 
             this.trackBar4.Location = new System.Drawing.Point(20, 117);
+            this.trackBar4.Maximum = 255;
             this.trackBar4.Name = "trackBar4";
             this.trackBar4.Size = new System.Drawing.Size(104, 45);
             this.trackBar4.TabIndex = 2;
+            this.trackBar4.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // Form1
             // 

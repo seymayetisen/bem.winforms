@@ -158,5 +158,18 @@ Etiam sed accumsan risus, vitae gravida ex. Donec ex risus, mollis quis pulvinar
         {
             richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, (sender as TrackBar).Value);
         }
+
+        private void RenkSec()
+        {
+            var color =Color.FromArgb(trackBar2.Value, trackBar3.Value, trackBar4.Value);
+
+            richTextBox1.SelectionColor = color;
+
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            RenkSec();
+        }
     }
 }
