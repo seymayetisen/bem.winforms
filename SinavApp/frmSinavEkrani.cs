@@ -26,7 +26,7 @@ namespace SinavApp
             //this.lblAdSoyad.Text = frmGiris.txtAdSoyad.Text;
         }
 
-        public frmSinavEkrani(string adSoyad, string sinavDosyaYolu) :this()
+        public frmSinavEkrani(string adSoyad, string sinavDosyaYolu) : this()
         {
             AdSoyad = adSoyad;
             lblAdSoyad.Text = adSoyad;
@@ -41,6 +41,43 @@ namespace SinavApp
                 lblSinavAciklama.Text = streamReader.ReadLine();
                 SinavSüresi = TimeSpan.FromSeconds(int.Parse(streamReader.ReadLine()));
                 SinavSüresiYüzdeOn = SinavSüresi.TotalSeconds * 0.1;
+
+                string line = "";
+
+                int soruSayisi = 0;
+                int top = -350;
+                int left = 0;
+
+                while (!string.IsNullOrWhiteSpace((line = streamReader.ReadLine())))
+                {
+                    soruSayisi++;
+                    var items = line.Split('|');
+
+                    top += (soruSayisi % 2 == 1) ? 350 : 0;
+                    left = (soruSayisi % 2 == 1) ? 0 : 286;
+
+                    var groupBox = new GroupBox
+                    {
+                        Location = new Point(left, top),
+                        Size = new Size(275, 300),
+                        Text = $"{soruSayisi}. Soru"
+                    };
+
+                    var lbl = new Label
+                    {
+                        Text = items[0],
+                        MaximumSize = new Size(260, 0),
+                        AutoSize = true,
+                        Location = new Point(15, 15)
+                    };
+
+                    groupBox.Controls.Add(lbl);
+
+                    pnlSorular.Controls.Add(groupBox);
+
+                };
+
+
                 //timer1.Interval = 1;
             }
 
@@ -49,17 +86,17 @@ namespace SinavApp
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //if (SinavSüresi.TotalSeconds == 0)
-            //{
-            //    timer1.Stop();
-            //}
-            //this.lblKalanZaman.Text = SinavSüresi.ToString(@"hh\:mm\:ss");
+            if (SinavSüresi.TotalSeconds == 0)
+            {
+                timer1.Stop();
+            }
+            this.lblKalanZaman.Text = SinavSüresi.ToString(@"hh\:mm\:ss");
 
-            //if (SinavSüresi.TotalSeconds <= SinavSüresiYüzdeOn)
-            //{
-            //    lblKalanZaman.ForeColor = Color.Red;
-            //}
-            //SinavSüresi = TimeSpan.FromSeconds(SinavSüresi.TotalSeconds-1);
+            if (SinavSüresi.TotalSeconds <= SinavSüresiYüzdeOn)
+            {
+                lblKalanZaman.ForeColor = Color.Red;
+            }
+            SinavSüresi = TimeSpan.FromSeconds(SinavSüresi.TotalSeconds - 1);
         }
     }
 }
