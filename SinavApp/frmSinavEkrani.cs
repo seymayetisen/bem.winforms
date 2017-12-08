@@ -70,15 +70,19 @@ namespace SinavApp
                         AutoSize = true,
                         Location = new Point(15, 15)
                     };
+                    int radiotop = lbl.Location.Y + lbl.PreferredHeight + 15;
                     for (int i = 1; i < items.Length-1; i++)
                     {
-                        int radiotop += lbl.Location.Y + lbl.PreferredHeight + 15;
+                        
                         var rdb = new RadioButton
                         {
                             Text = items[i],
+                            AutoSize = true,
                             Location = new Point(20, radiotop)
                         };
+
                         lbl.Controls.Add(rdb);
+                        radiotop += 30;
                     }
                     
 
