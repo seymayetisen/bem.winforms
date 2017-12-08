@@ -52,7 +52,7 @@
             // 
             this.lblSinavAciklama.AutoSize = true;
             this.lblSinavAciklama.Location = new System.Drawing.Point(15, 61);
-            this.lblSinavAciklama.MaximumSize = new System.Drawing.Size(300, 0);
+            this.lblSinavAciklama.MaximumSize = new System.Drawing.Size(350, 0);
             this.lblSinavAciklama.Name = "lblSinavAciklama";
             this.lblSinavAciklama.Size = new System.Drawing.Size(50, 13);
             this.lblSinavAciklama.TabIndex = 1;
@@ -67,6 +67,7 @@
             // 
             // pnlSorular
             // 
+            this.pnlSorular.AutoScroll = true;
             this.pnlSorular.Location = new System.Drawing.Point(12, 204);
             this.pnlSorular.Name = "pnlSorular";
             this.pnlSorular.Size = new System.Drawing.Size(561, 241);

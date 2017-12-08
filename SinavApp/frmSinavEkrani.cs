@@ -15,7 +15,7 @@ namespace SinavApp
     {
         public string AdSoyad { get; set; }
         public string SinavDosyaYolu { get; set; }
-        public int SinavSüresi { get; private set; }
+        public TimeSpan SinavSüresi { get; private set; }
         public double SinavSüresiYüzdeOn { get; private set; }
 
         public frmSinavEkrani()
@@ -39,9 +39,9 @@ namespace SinavApp
             {
                 lblSinavAdi.Text = streamReader.ReadLine();
                 lblSinavAciklama.Text = streamReader.ReadLine();
-                SinavSüresi = int.Parse(streamReader.ReadLine());
-                SinavSüresiYüzdeOn = SinavSüresi * 0.1;
-                timer1.Interval = 1;
+                SinavSüresi = TimeSpan.FromSeconds(int.Parse(streamReader.ReadLine()));
+                SinavSüresiYüzdeOn = SinavSüresi.TotalSeconds * 0.1;
+                //timer1.Interval = 1;
             }
 
             timer1.Start();
@@ -49,17 +49,17 @@ namespace SinavApp
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (SinavSüresi == 0)
-            {
-                timer1.Stop();
-            }
-            this.lblKalanZaman.Text = string.Format("{0:00}:{1:00}:{2:00}", (SinavSüresi / 3600), (SinavSüresi / 60), (SinavSüresi % 60));
+            //if (SinavSüresi.TotalSeconds == 0)
+            //{
+            //    timer1.Stop();
+            //}
+            //this.lblKalanZaman.Text = SinavSüresi.ToString(@"hh\:mm\:ss");
 
-            if (SinavSüresi <= SinavSüresiYüzdeOn)
-            {
-                lblKalanZaman.ForeColor = Color.Red;
-            }
-            SinavSüresi--;
+            //if (SinavSüresi.TotalSeconds <= SinavSüresiYüzdeOn)
+            //{
+            //    lblKalanZaman.ForeColor = Color.Red;
+            //}
+            //SinavSüresi = TimeSpan.FromSeconds(SinavSüresi.TotalSeconds-1);
         }
     }
 }
