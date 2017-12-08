@@ -15,8 +15,8 @@ namespace SinavApp
     {
         public string AdSoyad { get; set; }
         public string SinavDosyaYolu { get; set; }
-        public int SinavSüresi { get; set; }
-        public double SinavSüresiYüzdeOn { get; set; }
+        public TimeSpan SinavSüresi { get; private set; }
+        public double SinavSüresiYüzdeOn { get; private set; }
 
         public frmSinavEkrani()
         {
@@ -33,82 +33,70 @@ namespace SinavApp
             SinavDosyaYolu = sinavDosyaYolu;
         }
 
-
         private void frmSinavEkrani_Load(object sender, EventArgs e)
         {
             using (var streamReader = new StreamReader(SinavDosyaYolu))
             {
                 lblSinavAdi.Text = streamReader.ReadLine();
                 lblSinavAciklama.Text = streamReader.ReadLine();
-                SinavSüresi = int.Parse(streamReader.ReadLine());
-                SinavSüresiYüzdeOn = SinavSüresi / 10;
-              
-                int position = 0;
-                int position2 = 60;
+                SinavSüresi = TimeSpan.FromSeconds(int.Parse(streamReader.ReadLine()));
+                SinavSüresiYüzdeOn = SinavSüresi.TotalSeconds * 0.1;
 
+                string line = "";
 
-                string satir = "";
+                int soruSayisi = 0;
+                int top = -350;
+                int left = 0;
 
-                do
+                while (!string.IsNullOrWhiteSpace((line = streamReader.ReadLine())))
                 {
-                    
-                        satir = streamReader.ReadLine();
-                    if (!string.IsNullOrWhiteSpace(satir))
+                    soruSayisi++;
+                    var items = line.Split('|');
+
+                    top += (soruSayisi % 2 == 1) ? 350 : 0;
+                    left = (soruSayisi % 2 == 1) ? 0 : 286;
+
+                    var groupBox = new GroupBox
                     {
-                        var groupBox = new GroupBox();
-                        var label = new Label();
-                        
+                        Location = new Point(left, top),
+                        Size = new Size(275, 300),
+                        Text = $"{soruSayisi}. Soru"
+                    };
 
-                        label.AutoSize = true;
-                        groupBox.AutoSize = true;
-                        //
+                    var lbl = new Label
+                    {
+                        Text = items[0],
+                        MaximumSize = new Size(260, 0),
+                        AutoSize = true,
+                        Location = new Point(15, 15)
+                    };
 
-                        
-                        groupBox.Location = new Point(0, position);
-                       
-                        position += 110;
+                    groupBox.Controls.Add(lbl);
+
+                    pnlSorular.Controls.Add(groupBox);
+
+                };
 
 
-                        label.Text = satir.Substring(0, satir.IndexOf(@"?"));
-                        
-
-                        panel1.Controls.Add(label);
-                        panel1.Controls.Add(groupBox);
-                        groupBox.Controls.Add(label);
-                        string[] parcala = satir.Split('|');
-                        for (int i = 1; i < parcala.Length - 1; i++)
-                        {
-                            var radioBtn = new RadioButton();
-                            radioBtn.Location = new Point( position2,40);
-                            radioBtn.AutoSize = true;
-                            radioBtn.Text = parcala[i];
-                            
-                            position2 += 50;
-                            label.Controls.Add(radioBtn);
-                        }
-
-                    }
-                    
-                } while (!string.IsNullOrWhiteSpace(satir));
+                //timer1.Interval = 1;
             }
-            timer1.Interval = 1000;
+
             timer1.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (SinavSüresi == 0)
+            if (SinavSüresi.TotalSeconds == 0)
             {
                 timer1.Stop();
             }
-            this.lblKalanZaman.Text = string.Format("{0:00}:{1:00}:{2:00}", (SinavSüresi / 3600), (SinavSüresi / 60), (SinavSüresi % 60));
-            
-            if (SinavSüresi <= SinavSüresiYüzdeOn)
+            this.lblKalanZaman.Text = SinavSüresi.ToString(@"hh\:mm\:ss");
+
+            if (SinavSüresi.TotalSeconds <= SinavSüresiYüzdeOn)
             {
                 lblKalanZaman.ForeColor = Color.Red;
             }
-            SinavSüresi--;
-
+            SinavSüresi = TimeSpan.FromSeconds(SinavSüresi.TotalSeconds - 1);
         }
     }
 }
