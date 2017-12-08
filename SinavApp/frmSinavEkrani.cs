@@ -77,11 +77,12 @@ namespace SinavApp
                         var rdb = new RadioButton
                         {
                             Text = items[i],
+                            Enabled=false,
                             AutoSize = true,
                             Location = new Point(20, radiotop)
                         };
 
-                        lbl.Controls.Add(rdb);
+                        groupBox.Controls.Add(rdb);
                         radiotop += 30;
                     }
                     
@@ -93,7 +94,7 @@ namespace SinavApp
                 };
 
 
-                //timer1.Interval = 1;
+               // timer1.Interval = 1;
             }
 
             timer1.Start();
@@ -112,6 +113,11 @@ namespace SinavApp
                 lblKalanZaman.ForeColor = Color.Red;
             }
             SinavSüresi = TimeSpan.FromSeconds(SinavSüresi.TotalSeconds - 1);
+        }
+
+        private void basla_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
