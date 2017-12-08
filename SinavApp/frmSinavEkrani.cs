@@ -42,7 +42,54 @@ namespace SinavApp
                 lblSinavAciklama.Text = streamReader.ReadLine();
                 SinavSüresi = int.Parse(streamReader.ReadLine());
                 SinavSüresiYüzdeOn = SinavSüresi / 10;
+              
+                int position = 0;
+                int position2 = 60;
 
+
+                string satir = "";
+
+                do
+                {
+                    
+                        satir = streamReader.ReadLine();
+                    if (!string.IsNullOrWhiteSpace(satir))
+                    {
+                        var groupBox = new GroupBox();
+                        var label = new Label();
+                        
+
+                        label.AutoSize = true;
+                        groupBox.AutoSize = true;
+                        //
+
+                        
+                        groupBox.Location = new Point(0, position);
+                       
+                        position += 110;
+
+
+                        label.Text = satir.Substring(0, satir.IndexOf(@"?"));
+                        
+
+                        panel1.Controls.Add(label);
+                        panel1.Controls.Add(groupBox);
+                        groupBox.Controls.Add(label);
+                        string[] parcala = satir.Split('|');
+                        for (int i = 1; i < parcala.Length - 1; i++)
+                        {
+                            var radioBtn = new RadioButton();
+                            radioBtn.Location = new Point( position2,40);
+                            radioBtn.AutoSize = true;
+                            radioBtn.Text = parcala[i];
+                            
+                            position2 += 50;
+                            label.Controls.Add(radioBtn);
+                        }
+
+                    }
+                    
+                } while (!string.IsNullOrWhiteSpace(satir));
             }
             timer1.Interval = 1000;
             timer1.Start();
