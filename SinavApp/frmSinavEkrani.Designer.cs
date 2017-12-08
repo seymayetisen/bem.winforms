@@ -62,7 +62,7 @@
             // 
             this.prgCevapOrani.Location = new System.Drawing.Point(12, 175);
             this.prgCevapOrani.Name = "prgCevapOrani";
-            this.prgCevapOrani.Size = new System.Drawing.Size(561, 23);
+            this.prgCevapOrani.Size = new System.Drawing.Size(595, 23);
             this.prgCevapOrani.TabIndex = 2;
             // 
             // pnlSorular
@@ -70,7 +70,7 @@
             this.pnlSorular.AutoScroll = true;
             this.pnlSorular.Location = new System.Drawing.Point(12, 204);
             this.pnlSorular.Name = "pnlSorular";
-            this.pnlSorular.Size = new System.Drawing.Size(561, 241);
+            this.pnlSorular.Size = new System.Drawing.Size(595, 241);
             this.pnlSorular.TabIndex = 3;
             // 
             // lblKalanZaman
