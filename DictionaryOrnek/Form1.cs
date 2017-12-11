@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace DictionaryOrnek
 {
+   
     public partial class Form1 : Form
     {
         public Form1()
@@ -25,78 +26,90 @@ namespace DictionaryOrnek
         {
             switch (comboBox1.SelectedItem.ToString().ToLower())
             {
-                case "button": ButonEkle();break;
-                case "label": LabelEkle();break;
-                case "radio": RadioEkle();break;
+                case "button":
+                    Ekle<Button> generic = new Ekle<Button>("button");
+                    var btn=generic.ControlEkle(EkliOgeler);
+                    groupBox1.Controls.Add(btn);
+                    break;
+                case "label":
+                    Ekle<Label> generic2 = new Ekle<Label>("label");
+                    var lbl=generic2.ControlEkle(EkliOgeler);
+                    groupBox2.Controls.Add(lbl);
+                    break;
+                case "radio":
+                    Ekle<RadioButton> generic3 = new Ekle<RadioButton>("radio");
+                    var rdb=generic3.ControlEkle(EkliOgeler);
+                    groupBox3.Controls.Add(rdb);
+                    break;
                 default:
                     break;
             }
         }
 
-        private void RadioEkle()
-        {
-            if (!EkliOgeler.ContainsKey("radio"))
-            {
-                EkliOgeler.Add("radio", new List<Control>());
-            }
+        //private void RadioEkle()
+        //{
+        //    if (!EkliOgeler.ContainsKey("radio"))
+        //    {
+        //        EkliOgeler.Add("radio", new List<Control>());
+        //    }
 
 
-            int top = (EkliOgeler["radio"].Count > 0) ? EkliOgeler["radio"][EkliOgeler["radio"].Count - 1].Top : -10;
-            var radio = new RadioButton
-            {
-                Size = new Size(120, 20),
-                Text = (EkliOgeler["radio"].Count + 1).ToString(),
-                Location = new Point(20, top + 30)
-            };
+        //    int top = (EkliOgeler["radio"].Count > 0) ? EkliOgeler["radio"][EkliOgeler["radio"].Count - 1].Top : -10;
+        //    var radio = new RadioButton
+        //    {
+        //        Size = new Size(120, 20),
+        //        Text = (EkliOgeler["radio"].Count + 1).ToString(),
+        //        Location = new Point(20, top + 30)
+        //    };
 
-            EkliOgeler["radio"].Add(radio);
+        //    EkliOgeler["radio"].Add(radio);
 
-            groupBox3.Controls.Add(radio);
-        }
-
-
-
-        private void ButonEkle()
-        {
-            if (!EkliOgeler.ContainsKey("button"))
-            {
-                EkliOgeler.Add("button", new List<Control>());
-            }
+        //    groupBox3.Controls.Add(radio);
+        //}
 
 
-            int top = (EkliOgeler["button"].Count > 0) ? EkliOgeler["button"][EkliOgeler["button"].Count - 1].Top : -10;
-            var button = new Button
-            {
-                Size = new Size(120, 20),
-                Text = (EkliOgeler["button"].Count + 1).ToString(),
-                Location = new Point(20, top+30)
-            };
 
-            EkliOgeler["button"].Add(button);
-
-            groupBox1.Controls.Add(button);
-        }
-
-        private void LabelEkle()
-        {
-            if (!EkliOgeler.ContainsKey("label"))
-            {
-                EkliOgeler.Add("label", new List<Control>());
-            }
+        //private void ButonEkle()
+        //{
+        //    if (!EkliOgeler.ContainsKey("button"))
+        //    {
+        //        EkliOgeler.Add("button", new List<Control>());
+        //    }
 
 
-            int top = (EkliOgeler["label"].Count > 0) ? EkliOgeler["label"][EkliOgeler["label"].Count - 1].Top : -10;
-            var label = new Label
-            {
-                Size = new Size(120, 20),
-                Text = (EkliOgeler["label"].Count + 1).ToString(),
-                Location = new Point(20, top + 30)
-            };
+        //    int top = (EkliOgeler["button"].Count > 0) ? EkliOgeler["button"][EkliOgeler["button"].Count - 1].Top : -10;
+        //    var button = new Button
+        //    {
+        //        Size = new Size(120, 20),
+        //        Text = (EkliOgeler["button"].Count + 1).ToString(),
+        //        Location = new Point(20, top+30)
+        //    };
 
-            EkliOgeler["label"].Add(label);
+        //    EkliOgeler["button"].Add(button);
 
-            groupBox2.Controls.Add(label);
-        }
+        //    groupBox1.Controls.Add(button);
+        //}
+
+        //private void LabelEkle()
+        //{
+        //    if (!EkliOgeler.ContainsKey("label"))
+        //    {
+        //        EkliOgeler.Add("label", new List<Control>());
+        //    }
+
+
+        //    int top = (EkliOgeler["label"].Count > 0) ? EkliOgeler["label"][EkliOgeler["label"].Count - 1].Top : -10;
+        //    var label = new Label
+        //    {
+        //        Size = new Size(120, 20),
+        //        Text = (EkliOgeler["label"].Count + 1).ToString(),
+        //        Location = new Point(20, top + 30)
+        //    };
+
+        //    EkliOgeler["label"].Add(label);
+
+        //    groupBox2.Controls.Add(label);
+        //}
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -119,4 +132,5 @@ namespace DictionaryOrnek
             }
         }
     }
+    
 }
