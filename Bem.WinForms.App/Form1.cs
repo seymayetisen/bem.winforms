@@ -31,7 +31,7 @@ namespace Bem.WinForms.App
         {
             var listBox = (ListBox)sender;
 
-            if(listBox.SelectedItem is null)
+            if(listBox.SelectedItem == null)
             {
                 lblSeciliOge.Text = "";
                 return;
@@ -61,7 +61,7 @@ namespace Bem.WinForms.App
         {
             var cmb = (ComboBox)sender;
 
-            if(cmb.SelectedItem is null)
+            if(cmb.SelectedItem == null)
             {
                 return;
             }
