@@ -18,6 +18,8 @@ namespace SinavApp
         public TimeSpan SinavSüresi { get; private set; }
         public double SinavSüresiYüzdeOn { get; private set; }
 
+        int soruSayisi = 0;
+
         public frmSinavEkrani()
         {
             InitializeComponent();
@@ -33,8 +35,10 @@ namespace SinavApp
             SinavDosyaYolu = sinavDosyaYolu;
         }
 
+        
         private void frmSinavEkrani_Load(object sender, EventArgs e)
         {
+            
             using (var streamReader = new StreamReader(SinavDosyaYolu))
             {
                 lblSinavAdi.Text = streamReader.ReadLine();
@@ -44,7 +48,7 @@ namespace SinavApp
 
                 string line = "";
 
-                int soruSayisi = 0;
+                this.lblKalanZaman.Text = SinavSüresi.ToString(@"hh\:mm\:ss");
                 int top = -350;
                 int left = 0;
 
@@ -59,6 +63,7 @@ namespace SinavApp
                     var groupBox = new GroupBox
                     {
                         Location = new Point(left, top),
+                        Name = soruSayisi.ToString(),
                         Size = new Size(275, 300),
                         Text = $"{soruSayisi}. Soru"
                     };
@@ -73,14 +78,21 @@ namespace SinavApp
                     int radiotop = lbl.Location.Y + lbl.PreferredHeight + 15;
                     for (int i = 1; i < items.Length-1; i++)
                     {
-                        
+
                         var rdb = new RadioButton
                         {
                             Text = items[i],
-                            Enabled=false,
+                            Enabled = false,
+                            Name = soruSayisi.ToString() + i.ToString(),
                             AutoSize = true,
                             Location = new Point(20, radiotop)
+                            
+                            //Name.prgCevapOrani_Click += new System.EventHandler(this.prgCevapOrani_Click)
+
                         };
+                        rdb.CheckedChanged += new System.EventHandler(ProgresbarHesapla);
+                        
+                        
 
                         groupBox.Controls.Add(rdb);
                         radiotop += 30;
@@ -92,12 +104,8 @@ namespace SinavApp
                     pnlSorular.Controls.Add(groupBox);
 
                 };
-
-
                // timer1.Interval = 1;
             }
-
-            timer1.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -105,6 +113,8 @@ namespace SinavApp
             if (SinavSüresi.TotalSeconds == 0)
             {
                 timer1.Stop();
+                CevaplariKayitEt();
+                goupBoxDöndürRadiolarinEtkinligi(false);
             }
             this.lblKalanZaman.Text = SinavSüresi.ToString(@"hh\:mm\:ss");
 
@@ -117,7 +127,93 @@ namespace SinavApp
 
         private void basla_Click(object sender, EventArgs e)
         {
-
+            goupBoxDöndürRadiolarinEtkinligi(true);
+            timer1.Start();
+            btnBasla.Enabled = false;
         }
+        private List<Control> goupBoxDöndürRadiolarinEtkinligi(bool EtkinMi)
+        {
+            List<Control> GroupBoxControls = new List<Control>();
+            GroupBoxControls.Clear();
+            foreach (Control control2 in this.pnlSorular.Controls)
+            {
+                if (control2 is GroupBox)
+                {
+                    GroupBoxControls.Add(control2);
+                    foreach (Control control in control2.Controls)
+                    {
+                        
+                        if (control is RadioButton)
+                        {
+                            RadioButton radio = control as RadioButton;
+
+                            radio.Enabled = EtkinMi;
+                        }
+                    }
+                }
+            }
+            return GroupBoxControls;
+        }
+        private void ProgresbarHesapla(object sender, EventArgs e)
+        {
+            byte value = 0;
+            List<Control> GroupBoxLar = new List<Control>();
+            GroupBoxLar = goupBoxDöndürRadiolarinEtkinligi(true);
+            prgCevapOrani.Maximum = GroupBoxLar.Count;
+
+            
+            foreach (var groupBox in GroupBoxLar)
+            {
+                foreach (var control in groupBox.Controls)
+                {
+                    if (control is RadioButton)
+                    {
+                        RadioButton radio = control as RadioButton;
+                        if (radio.Checked)
+                        {
+                            value++;
+                        }
+                    }
+                }
+                
+            }
+
+            prgCevapOrani.Value = value;
+        }
+        private void btnBitti_Click(object sender, EventArgs e)
+        {
+            CevaplariKayitEt();
+            timer1.Stop();
+            
+        }
+        private void CevaplariKayitEt()
+        {
+            int CevaplananSecenek = 0;
+            using (var streamWriter = new StreamWriter(@"C:\Users\Seyma\Source\Repos\bem.winforms\SinavApp\Cevaplar\" + lblSinavAdi.Text + "-" + lblAdSoyad.Text + "-001.txt", true))
+            {
+                streamWriter.WriteLine($"{lblSinavAdi.Text}");
+                List<Control> GroupBoxLar = new List<Control>();
+                GroupBoxLar = goupBoxDöndürRadiolarinEtkinligi(false);
+                foreach (var groupBox in GroupBoxLar)
+                {
+                    foreach (var control in groupBox.Controls)
+                    {
+                        if (control is RadioButton)
+                        {
+                            CevaplananSecenek++;
+                            RadioButton radio = control as RadioButton;
+                            if (radio.Checked)
+                            {
+                                streamWriter.WriteLine($"{groupBox.Name} {CevaplananSecenek}");
+                                CevaplananSecenek = 0;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        
     }
 }
